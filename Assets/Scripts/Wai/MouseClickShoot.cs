@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class MouseClickShoot : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class MouseClickShoot : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform shootPos;
-    [SerializeField] private float shootSpeed, shootTimer;
+    [SerializeField] [Range(0,50)] private float shootSpeed;
+    [SerializeField] [Range(0, 20)] private int BulletDestroyTimer=0;
+    [SerializeField] private float shootTimer;
     private bool isShooting;
     private float Lscale, angle, modifiedAngle;
     // Start is called before the first frame update
@@ -55,7 +58,14 @@ public class MouseClickShoot : MonoBehaviour
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(scale, Mathf.Tan(angle * Mathf.PI / 180) * Mathf.Clamp(Lscale, -1f, 1f)).normalized * shootSpeed;
         newBullet.transform.rotation = Quaternion.Euler(0, 0, angle);
         newBullet.transform.localScale = new Vector2(newBullet.transform.localScale.x * scale, newBullet.transform.localScale.y);
+        Timer(BulletDestroyTimer, newBullet);
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
+    }
+
+    async void Timer(int Second, GameObject ObjToDestroy)
+    {
+        await Task.Delay(Second * 1000);
+        Destroy(ObjToDestroy);
     }
 }
