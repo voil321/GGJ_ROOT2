@@ -6,6 +6,7 @@ using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
 using Spine.Unity;
+using Spine;
 
 namespace Platformer.Mechanics
 {
@@ -30,9 +31,17 @@ namespace Platformer.Mechanics
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
+        /*internal new*/
+        public Collider2D collider2d;
+        /*internal new*/
+        public AudioSource audioSource;
         public Health health;
+
+        [SerializeField] private Vector3 mouse_pos;
+        [SerializeField] private Vector3 object_pos;
+        private float angle;
+        public Transform arrow;
+        private bool prepareForFire;
         public bool controlEnabled = true;
 
         bool jump;
@@ -52,6 +61,19 @@ namespace Platformer.Mechanics
             m_spineAni = GetComponent<SkeletonAnimation>();
             //spriteRenderer = GetComponent<SpriteRenderer>();
             //animator = GetComponent<Animator>();
+
+            m_spineAni.AnimationState.Complete += HandleEvent;
+        }
+
+        void HandleEvent(TrackEntry trackEntry)
+        {
+            // Play some sound if the event named "footstep" fired.
+            if (trackEntry.Animation.Name == "attack2")
+            {
+                
+                Debug.Log("Play a footstep sound!");
+                prepareForFire = false;
+            }
         }
 
         protected override void Update()
@@ -63,14 +85,40 @@ namespace Platformer.Mechanics
                     jumpState = JumpState.PrepareToJump;
                 else if (Input.GetButtonUp("Jump"))
                 {
-                    stopJump = true;
-                    Schedule<PlayerStopJump>().player = this;
+                    //stopJump = true;
+                    //Schedule<PlayerStopJump>().player = this;
                 }
             }
             else
             {
                 move.x = 0;
             }
+
+            if (Input.GetKeyDown(KeyCode.F) && !prepareForFire)
+            {
+                prepareForFire = true;
+                m_spineAni.state.SetAnimation(0, "attack", true);
+            }
+            else if (prepareForFire && Input.GetKeyUp(KeyCode.F))
+            {
+                m_spineAni.state.SetAnimation(0, "attack2", false);
+
+            }
+
+
+            mouse_pos = Input.mousePosition;
+            object_pos = Camera.main.WorldToScreenPoint(arrow.position);
+            mouse_pos.x = mouse_pos.x - object_pos.x;
+            mouse_pos.y = mouse_pos.y - object_pos.y;
+            angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+
+            //var x = Mathf.
+
+            arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+
+
             UpdateJumpState();
             base.Update();
         }
@@ -121,11 +169,21 @@ namespace Platformer.Mechanics
                 }
             }
 
-            //if (move.x > 0.01f)
-            //    spriteRenderer.flipX = false;
-            //else if (move.x < -0.01f)
-            //    spriteRenderer.flipX = true;
+            if (move.x > 0.01f)
+                m_spineAni.skeleton.ScaleX = 1;
+            else if (move.x < -0.01f)
+                m_spineAni.skeleton.ScaleX = -1;
 
+
+
+            if (velocity == Vector2.zero && m_spineAni.state.GetCurrent(0).Animation.Name != "stand" && !prepareForFire)
+            {
+                m_spineAni.state.SetAnimation(0, "stand", true);
+            }
+            else if (velocity.x != 0 && IsGrounded && m_spineAni.state.GetCurrent(0).Animation.Name != "move" && !prepareForFire)
+            {
+                m_spineAni.state.SetAnimation(0, "move", true);
+            }
             //animator.SetBool("grounded", IsGrounded);
             //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 

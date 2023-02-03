@@ -1,90 +1,98 @@
 skeleton.png
-size:972,997
+size:1364,777
 filter:Linear,Linear
 pma:true
 Body
-bounds:453,159,255,237
+bounds:952,196,255,237
 offsets:706,490,1920,1200
 F hair1
-bounds:710,267,301,232
+bounds:453,70,301,232
 offsets:714,700,1920,1200
 rotate:90
 L hand
-bounds:406,521,169,474
+bounds:604,606,169,474
 offsets:947,205,1920,1200
+rotate:90
+L hand2
+bounds:604,435,169,474
+offsets:947,205,1920,1200
+rotate:90
 L low
-bounds:406,398,121,223
+bounds:932,73,121,223
 offsets:839,144,1920,1200
 rotate:90
 L low hand
-bounds:776,587,108,194
+bounds:1209,281,108,194
 offsets:900,345,1920,1200
-rotate:90
+L low hand2
+bounds:814,5,116,194
+offsets:900,345,1920,1200
 L up  hand
-bounds:577,521,47,89
+bounds:1027,24,47,89
 offsets:888,516,1920,1200
 rotate:90
 L眼
-bounds:453,17,74,57
+bounds:604,376,74,57
 offsets:894,752,1920,1200
 R low
-bounds:846,791,71,204
+bounds:1157,114,71,204
 offsets:753,132,1920,1200
+rotate:90
 R low hand
-bounds:577,570,125,197
+bounds:687,2,125,197
 offsets:654,360,1920,1200
-rotate:90
 Rhand
-bounds:668,526,40,42
+bounds:1080,435,40,42
 offsets:687,374,1920,1200
-Rup hand
-bounds:631,426,67,93
-offsets:733,503,1920,1200
-R眼
-bounds:609,75,82,62
-offsets:782,746,1920,1200
 rotate:90
+Rup hand
+bounds:932,4,67,93
+offsets:733,503,1920,1200
+rotate:90
+R眼
+bounds:453,6,82,62
+offsets:782,746,1920,1200
 back hair
-bounds:2,26,367,449
+bounds:2,4,367,449
 offsets:634,490,1920,1200
 rotate:90
 head
-bounds:710,2,263,232
+bounds:687,201,263,232
 offsets:709,662,1920,1200
-rotate:90
 low
-bounds:577,697,298,267
+bounds:1080,477,298,267
 offsets:682,260,1920,1200
 rotate:90
 右側頭髮
-bounds:453,76,81,154
+bounds:1157,31,81,154
 offsets:925,683,1920,1200
 rotate:90
 右眼眉毛
-bounds:776,572,63,13
+bounds:1349,712,63,13
 offsets:807,820,1920,1200
-右眼關閉
-bounds:919,906,89,37
-offsets:886,753,1920,1200
 rotate:90
+右眼關閉
+bounds:537,31,89,37
+offsets:886,753,1920,1200
 嘴巴
-bounds:631,403,46,21
+bounds:1118,25,46,21
 offsets:859,700,1920,1200
+rotate:90
 嘴巴2
-bounds:911,576,31,9
+bounds:1027,13,31,9
 offsets:870,707,1920,1200
 左眼眉毛
-bounds:841,574,68,11
+bounds:1319,407,68,11
 offsets:896,820,1920,1200
+rotate:90
 左眼關閉
-bounds:919,817,87,35
+bounds:1313,25,87,35
 offsets:782,755,1920,1200
 rotate:90
 帽
-bounds:2,395,600,402
+bounds:2,373,600,402
 offsets:567,732,1920,1200
-rotate:90
 頸部
-bounds:846,697,92,115
+bounds:1209,187,92,115
 offsets:811,540,1920,1200
 rotate:90

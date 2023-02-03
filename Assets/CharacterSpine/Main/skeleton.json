@@ -1,14 +1,5 @@
 {
-"skeleton": {
-	"hash": "blwub6kYvfk",
-	"spine": "4.1.19",
-	"x": -956.77,
-	"y": -261.84,
-	"width": 2080.09,
-	"height": 1429.06,
-	"images": "../",
-	"audio": ""
-},
+"skeleton": { "hash": "VOwE/kkv00s", "spine": "4.1.19", "x": -956.77, "y": -218.69, "width": 2046.18, "height": 1336.9 },
 "bones": [
 	{ "name": "root" },
 	{ "name": "bone", "parent": "root", "x": 15.74, "y": 371.42 },
@@ -19,7 +10,7 @@
 	{ "name": "bone6", "parent": "bone5", "length": 23.02, "rotation": 7.04, "x": 118.91, "y": 0.41 },
 	{ "name": "L hand bone", "parent": "Body bone", "length": 69.03, "rotation": -161.13, "x": 79, "y": -27.35 },
 	{ "name": "bone8", "parent": "L hand bone", "length": 106.69, "rotation": 18.65, "x": 68.08, "y": 0.33 },
-	{ "name": "bone9", "parent": "bone8", "length": 44.53, "rotation": 30.58, "x": 106.9, "y": 0.27 },
+	{ "name": "bone9", "parent": "bone8", "length": 44.53, "rotation": 33.29, "x": 107.46, "y": -0.29 },
 	{ "name": "back hair bone", "parent": "Head bone", "length": 61.35, "rotation": 172.87, "x": 117, "y": 130.6 },
 	{ "name": "右側頭髮bone", "parent": "Head bone", "length": 87.02, "rotation": 176.98, "x": 140.03, "y": -100.85 },
 	{ "name": "low bone", "parent": "root", "length": 135.67, "rotation": -93.98, "x": 15.22, "y": 359.32 },
@@ -32,11 +23,11 @@
 ],
 "slots": [
 	{ "name": "back hair", "bone": "back hair bone", "attachment": "back hair" },
-	{ "name": "L hand", "bone": "bone9", "attachment": "L hand" },
 	{ "name": "L low", "bone": "L low bone", "attachment": "L low" },
 	{ "name": "R low", "bone": "R low bone", "attachment": "L low" },
 	{ "name": "L up  hand", "bone": "L hand bone", "attachment": "L up  hand" },
-	{ "name": "L low hand", "bone": "bone8", "attachment": "L low hand" },
+	{ "name": "L low hand", "bone": "bone8", "attachment": "L low hand2" },
+	{ "name": "L hand", "bone": "bone9", "attachment": "L hand" },
 	{ "name": "low", "bone": "low bone", "attachment": "low" },
 	{ "name": "Body", "bone": "Body bone", "attachment": "Body" },
 	{ "name": "頸部", "bone": "頸部bone", "attachment": "頸部" },
@@ -45,7 +36,7 @@
 	{ "name": "R low hand", "bone": "bone5", "attachment": "R low hand" },
 	{ "name": "右側頭髮", "bone": "右側頭髮bone", "attachment": "右側頭髮" },
 	{ "name": "head", "bone": "Head bone", "attachment": "head" },
-	{ "name": "嘴巴2", "bone": "Head bone", "attachment": "嘴巴" },
+	{ "name": "嘴巴2", "bone": "Head bone", "attachment": "嘴巴2" },
 	{ "name": "R眼", "bone": "Head bone", "attachment": "R眼" },
 	{ "name": "L眼", "bone": "Head bone", "attachment": "L眼" },
 	{ "name": "右眼眉毛", "bone": "右眼眉毛", "attachment": "右眼眉毛" },
@@ -70,13 +61,15 @@
 				"head": { "x": -58.12, "y": -97.71, "rotation": -87.67, "width": 1920, "height": 1200 }
 			},
 			"L hand": {
-				"L hand": { "x": -75.37, "y": 133.22, "rotation": 21.73, "width": 1920, "height": 1200 }
+				"L hand": { "x": -75.37, "y": 133.22, "rotation": 21.73, "width": 1920, "height": 1200 },
+				"L hand2": { "x": -73.3, "y": 133.34, "rotation": 21.4, "width": 1920, "height": 1200 }
 			},
 			"L low": {
 				"L low": { "x": -292.39, "y": 117.19, "rotation": 85.42, "width": 1920, "height": 1200 }
 			},
 			"L low hand": {
-				"L low hand": { "x": -25.76, "y": 76.62, "rotation": 52.31, "width": 1920, "height": 1200 }
+				"L low hand": { "x": -25.76, "y": 76.62, "rotation": 52.31, "width": 1920, "height": 1200 },
+				"L low hand2": { "x": -27.49, "y": 80.27, "rotation": 52.3, "width": 1920, "height": 1200 }
 			},
 			"low": {
 				"low": { "x": -106.98, "y": 86.87, "rotation": 93.99, "width": 1920, "height": 1200 }
@@ -128,24 +121,624 @@
 	}
 ],
 "animations": {
-	"jump1": {
+	"attack": {
+		"slots": {
+			"L hand": {
+				"attachment": [
+					{ "time": 0.8333, "name": "L hand2" },
+					{ "time": 1.6667, "name": "L hand2" },
+					{ "time": 2.6667, "name": "L hand2" }
+				]
+			},
+			"R low": {
+				"attachment": [
+					{ "name": "R low" },
+					{ "time": 1.6667, "name": "R low" }
+				]
+			}
+		},
+		"bones": {
+			"low bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.8667, "curve": "stepped" },
+					{ "time": 1.6667, "curve": "stepped" },
+					{ "time": 2.6667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8667, "y": -34.86 },
+					{ "time": 1.6667, "y": -44.27 },
+					{ "time": 2.6667, "y": -34.86 }
+				]
+			},
+			"R low bone": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": -23.06, "curve": "stepped" },
+					{ "time": 1.6667, "value": -23.06, "curve": "stepped" },
+					{ "time": 2.6667, "value": -23.06 }
+				],
+				"translate": [
+					{ "y": -5.86 },
+					{ "time": 0.8333, "x": -22.96, "y": -41.61 },
+					{ "time": 1.6667, "x": -33.75, "y": -41.61 },
+					{ "time": 2.6667, "x": -22.96, "y": -41.61 }
+				]
+			},
+			"L low bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.8333, "curve": "stepped" },
+					{ "time": 1.6667, "curve": "stepped" },
+					{ "time": 2.6667 }
+				],
+				"translate": [
+					{ "x": 4.9, "y": 10.69 },
+					{ "time": 0.8333, "x": -27.63, "y": 64.53 },
+					{ "time": 1.6667, "x": -39.81, "y": 64.53 },
+					{ "time": 2.6667, "x": -27.63, "y": 64.53 }
+				]
+			},
+			"Body bone": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": -1.85, "curve": "stepped" },
+					{ "time": 1.6667, "value": -1.85, "curve": "stepped" },
+					{ "time": 2.6667, "value": -1.85 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "y": -21.87 },
+					{ "time": 1.6667, "y": -35.24 },
+					{ "time": 2.6667, "y": -21.87 }
+				]
+			},
+			"R hand bone": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": -58.72, "curve": "stepped" },
+					{ "time": 1.6667, "value": -58.72, "curve": "stepped" },
+					{ "time": 2.6667, "value": -58.72 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "y": -29.71, "curve": "stepped" },
+					{ "time": 1.6667, "y": -29.71, "curve": "stepped" },
+					{ "time": 2.6667, "y": -29.71 }
+				]
+			},
+			"bone5": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": 177.22, "curve": "stepped" },
+					{ "time": 1.6667, "value": 177.22, "curve": "stepped" },
+					{ "time": 2.6667, "value": 177.22 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "x": -27.88, "y": 4.62, "curve": "stepped" },
+					{ "time": 1.6667, "x": -27.88, "y": 4.62, "curve": "stepped" },
+					{ "time": 2.6667, "x": -27.88, "y": 4.62 }
+				]
+			},
+			"L hand bone": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": 64.31, "curve": "stepped" },
+					{ "time": 1.6667, "value": 64.31, "curve": "stepped" },
+					{ "time": 2.6667, "value": 64.31 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "y": -0.86, "curve": "stepped" },
+					{ "time": 1.6667, "y": -0.86, "curve": "stepped" },
+					{ "time": 2.6667, "y": -0.86 }
+				]
+			},
+			"bone8": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": -22.11, "curve": "stepped" },
+					{ "time": 1.6667, "value": -22.11, "curve": "stepped" },
+					{ "time": 2.6667, "value": -22.11 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "x": -2.94, "y": -3.9, "curve": "stepped" },
+					{ "time": 1.6667, "x": -2.94, "y": -3.9, "curve": "stepped" },
+					{ "time": 2.6667, "x": -2.94, "y": -3.9 }
+				]
+			},
+			"bone9": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": -54.34, "curve": "stepped" },
+					{ "time": 1.6667, "value": -54.34, "curve": "stepped" },
+					{ "time": 2.6667, "value": -54.34 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "x": 9.65, "y": 16.23, "curve": "stepped" },
+					{ "time": 1.6667, "x": 9.65, "y": 16.23, "curve": "stepped" },
+					{ "time": 2.6667, "x": 9.65, "y": 16.23 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.8333, "x": 1.023, "curve": "stepped" },
+					{ "time": 1.6667, "x": 1.023, "curve": "stepped" },
+					{ "time": 2.6667, "x": 1.023 }
+				],
+				"shear": [
+					{},
+					{ "time": 0.8333, "y": 33.49, "curve": "stepped" },
+					{ "time": 1.6667, "y": 33.49, "curve": "stepped" },
+					{ "time": 2.6667, "y": 33.49 }
+				]
+			},
+			"左眼眉毛": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": 18.55, "curve": "stepped" },
+					{ "time": 1.6667, "value": 18.55 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "x": -18.46, "y": 6.29, "curve": "stepped" },
+					{ "time": 1.6667, "x": -18.46, "y": 6.29 }
+				]
+			},
+			"右眼眉毛": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": -20.7, "curve": "stepped" },
+					{ "time": 1.6667, "value": -20.7 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "x": -19.68, "y": -3.84, "curve": "stepped" },
+					{ "time": 1.6667, "x": -19.68, "y": -3.84 }
+				]
+			},
+			"Head bone": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": -4.44 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "x": -7.1 }
+				]
+			}
+		}
+	},
+	"attack2": {
+		"slots": {
+			"L hand": {
+				"attachment": [
+					{ "name": "L hand2" },
+					{ "time": 1.6667, "name": "L hand2" }
+				]
+			},
+			"R low": {
+				"attachment": [
+					{ "name": "R low" }
+				]
+			}
+		},
+		"bones": {
+			"Body bone": {
+				"rotate": [
+					{ "value": -1.85 }
+				],
+				"translate": [
+					{ "y": -21.87 }
+				]
+			},
+			"L hand bone": {
+				"rotate": [
+					{ "value": 64.31 },
+					{ "time": 1.6667, "value": -5.08 }
+				],
+				"translate": [
+					{ "y": -0.86 }
+				]
+			},
+			"bone8": {
+				"rotate": [
+					{ "value": -22.11 },
+					{ "time": 0.8333, "value": 94.3 },
+					{ "time": 1.6667, "value": -22.11 }
+				],
+				"translate": [
+					{ "x": -2.94, "y": -3.9 },
+					{ "time": 0.3, "x": 4.54, "y": -0.44 },
+					{ "time": 0.6333, "x": 4.11, "y": 8.42 },
+					{ "time": 0.8333, "x": -1.03, "y": 13.73 },
+					{ "time": 1, "x": 1.07, "y": 10.2 },
+					{ "time": 1.1333, "x": 3.79, "y": 7.38 },
+					{ "time": 1.3, "x": 4.33, "y": 3.86 },
+					{ "time": 1.6667, "x": -2.94, "y": -3.9 }
+				],
+				"shear": [
+					{ "time": 0.8333, "x": 33.41 }
+				]
+			},
+			"bone9": {
+				"rotate": [
+					{ "value": -54.34, "curve": "stepped" },
+					{ "time": 1.6667, "value": -54.34 }
+				],
+				"translate": [
+					{ "x": 9.65, "y": 16.23, "curve": "stepped" },
+					{ "time": 1.6667, "x": 9.65, "y": 16.23 }
+				],
+				"scale": [
+					{ "x": 1.023, "curve": "stepped" },
+					{ "time": 1.6667, "x": 1.023 }
+				],
+				"shear": [
+					{ "y": 33.49, "curve": "stepped" },
+					{ "time": 1.6667, "y": 33.49 }
+				]
+			},
+			"R hand bone": {
+				"rotate": [
+					{ "value": -58.72 },
+					{ "time": 0.8333, "value": -41.22 }
+				],
+				"translate": [
+					{ "y": -29.71 },
+					{ "time": 0.8333, "x": 2.36, "y": -31.83 },
+					{ "time": 1.6667, "x": -7.25, "y": -16.66 }
+				]
+			},
+			"bone5": {
+				"rotate": [
+					{ "value": 177.22 },
+					{ "time": 0.8333, "value": 126.26 },
+					{ "time": 1.6667, "value": 0.94 }
+				],
+				"translate": [
+					{ "x": -27.88, "y": 4.62 },
+					{ "time": 0.8333, "x": -17.94, "y": 21.76 },
+					{ "time": 1.3, "x": 2.99, "y": 20.51 },
+					{ "time": 1.6667, "x": 19.44, "y": 0.21 }
+				]
+			},
+			"low bone": {
+				"rotate": [
+					{}
+				],
+				"translate": [
+					{ "y": -34.86 }
+				]
+			},
+			"R low bone": {
+				"rotate": [
+					{ "value": -23.06 }
+				],
+				"translate": [
+					{ "x": -22.96, "y": -41.61 }
+				]
+			},
+			"L low bone": {
+				"rotate": [
+					{}
+				],
+				"translate": [
+					{ "x": -27.63, "y": 64.53 }
+				]
+			},
+			"右眼眉毛": {
+				"rotate": [
+					{ "value": -20.7 }
+				],
+				"translate": [
+					{ "x": -19.68, "y": -3.84 }
+				]
+			},
+			"左眼眉毛": {
+				"rotate": [
+					{ "value": 18.55 }
+				],
+				"translate": [
+					{ "x": -18.46, "y": 6.29 }
+				]
+			},
+			"bone": {
+				"rotate": [
+					{},
+					{ "time": 1.6667, "value": -8.69 }
+				],
+				"translate": [
+					{},
+					{ "time": 1.6667, "y": -15.75 }
+				]
+			}
+		},
+		"drawOrder": [
+			{
+				"offsets": [
+					{ "slot": "L low hand", "offset": 15 },
+					{ "slot": "L hand", "offset": 15 },
+					{ "slot": "Rhand", "offset": 8 },
+					{ "slot": "Rup hand", "offset": -5 },
+					{ "slot": "R low hand", "offset": 7 }
+				]
+			},
+			{
+				"time": 1.3,
+				"offsets": [
+					{ "slot": "Rhand", "offset": 10 },
+					{ "slot": "Rup hand", "offset": -3 },
+					{ "slot": "R low hand", "offset": 9 }
+				]
+			}
+		]
+	},
+	"dead": {
 		"slots": {
 			"L眼": {
 				"attachment": [
-					{ "name": "L眼" },
+					{ "time": 0.3333, "name": "右眼關閉" },
 					{ "time": 0.6667, "name": "右眼關閉" }
+				]
+			},
+			"R low": {
+				"attachment": [
+					{ "name": "R low" }
 				]
 			},
 			"R眼": {
 				"attachment": [
-					{ "name": "R眼" },
+					{ "time": 0.3333, "name": "左眼關閉" },
 					{ "time": 0.6667, "name": "左眼關閉" }
 				]
 			},
 			"嘴巴2": {
 				"attachment": [
 					{ "name": "嘴巴2" },
-					{ "time": 0.6667, "name": "嘴巴2" }
+					{ "time": 0.3333, "name": "嘴巴" },
+					{ "time": 0.6667, "name": "嘴巴2" },
+					{ "time": 1.1667, "name": "嘴巴" }
+				]
+			}
+		},
+		"bones": {
+			"R hand bone": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": 46.96 },
+					{ "time": 1.3333, "value": 7.82 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": 33.23, "y": 25.44 },
+					{ "time": 1.3333, "x": 5.14, "y": 11.4 }
+				]
+			},
+			"bone5": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": 115.06 },
+					{ "time": 1.1667, "value": 10.19 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": -15.97, "y": 28.16 },
+					{ "time": 1.1667, "x": 11.82, "y": 3.73 }
+				]
+			},
+			"Head bone": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": -17.34 },
+					{ "time": 1.1667, "value": 6.71 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 0.6667 }
+				]
+			},
+			"Body bone": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": -16.83 },
+					{ "time": 1.1667, "value": 87.29 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": 2.24, "y": -10.47 },
+					{ "time": 1.1667, "x": -374.21, "y": -305.61 }
+				]
+			},
+			"左眼眉毛": {
+				"rotate": [
+					{ "time": 0.3333, "value": 15.33 },
+					{ "time": 0.6667, "value": 32.09 }
+				],
+				"translate": [
+					{ "time": 0.3333, "x": -36.31, "y": 12.57 },
+					{ "time": 0.6667, "x": -37.86, "y": 11.85 }
+				]
+			},
+			"右眼眉毛": {
+				"rotate": [
+					{ "time": 0.3333, "value": -19.81 },
+					{ "time": 0.6667, "value": -21.8 }
+				],
+				"translate": [
+					{ "time": 0.3333, "x": -35.22, "y": -9.69 },
+					{ "time": 0.6667, "x": -38.95, "y": -8.9 }
+				]
+			},
+			"L hand bone": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": 15.08 },
+					{ "time": 1.1667, "value": -29.72 }
+				],
+				"translate": [
+					{}
+				]
+			},
+			"low bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.6667 },
+					{ "time": 1.1667, "value": 92.48 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 0.6667 },
+					{ "time": 1.1667, "x": -353.37, "y": -274.06 }
+				]
+			},
+			"L low bone": {
+				"rotate": [
+					{ "time": 1.3333 }
+				],
+				"translate": [
+					{ "time": 1.3333, "y": -85.3 }
+				]
+			}
+		},
+		"drawOrder": [
+			{
+				"offsets": [
+					{ "slot": "Rhand", "offset": 9 },
+					{ "slot": "R low hand", "offset": 8 }
+				]
+			},
+			{
+				"time": 0.6667,
+				"offsets": [
+					{ "slot": "Rhand", "offset": 9 },
+					{ "slot": "R low hand", "offset": 8 }
+				]
+			}
+		]
+	},
+	"idle": {
+		"slots": {
+			"R low": {
+				"attachment": [
+					{ "name": "R low" }
+				]
+			},
+			"嘴巴2": {
+				"attachment": [
+					{ "name": "嘴巴2" }
+				]
+			}
+		},
+		"bones": {
+			"Body bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.8333, "curve": "stepped" },
+					{ "time": 1.6667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "y": -9.77 },
+					{ "time": 1.6667 }
+				]
+			},
+			"R hand bone": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": -9.78 },
+					{ "time": 1.6667 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 1.6667 }
+				]
+			},
+			"bone5": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": 11.89 },
+					{ "time": 1.6667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "y": 5.18 },
+					{ "time": 1.6667 }
+				]
+			},
+			"L hand bone": {
+				"rotate": [
+					{},
+					{ "time": 0.8333, "value": 8.15 },
+					{ "time": 1.6667 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 1.6667 }
+				]
+			},
+			"low bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 1.6667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "y": -18.46 },
+					{ "time": 1.6667 }
+				]
+			},
+			"R low bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.8333, "curve": "stepped" },
+					{ "time": 1.6667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "x": -16.25 },
+					{ "time": 1.6667 }
+				]
+			},
+			"L low bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 1.6667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8333, "x": -14.31 },
+					{ "time": 1.6667 }
+				]
+			}
+		}
+	},
+	"jump (old)": {
+		"slots": {
+			"L眼": {
+				"attachment": [
+					{ "name": "L眼" },
+					{ "time": 0.6667, "name": "右眼關閉" },
+					{ "time": 1.3333, "name": "L眼" },
+					{ "time": 2, "name": "L眼" }
+				]
+			},
+			"R眼": {
+				"attachment": [
+					{ "name": "R眼" },
+					{ "time": 0.6667, "name": "左眼關閉" },
+					{ "time": 2, "name": "R眼" }
+				]
+			},
+			"嘴巴2": {
+				"attachment": [
+					{ "name": "嘴巴2" },
+					{ "time": 0.6667, "name": "嘴巴2" },
+					{ "time": 1.3333, "name": "嘴巴" },
+					{ "time": 2, "name": "嘴巴2" }
 				]
 			}
 		},
@@ -153,59 +746,69 @@
 			"low bone": {
 				"rotate": [
 					{},
-					{ "time": 1.3333, "value": 6.32 }
+					{ "time": 1.3333, "value": 6.32 },
+					{ "time": 2 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "y": -50.9 },
-					{ "time": 1.3333, "x": -1.01, "y": 10.09 }
+					{ "time": 1.3333, "x": -1.01, "y": 10.09 },
+					{ "time": 2, "y": -50.9 }
 				]
 			},
 			"R low bone": {
 				"rotate": [
 					{},
 					{ "time": 0.6667, "value": -80.99 },
-					{ "time": 1.3333 }
+					{ "time": 1.3333, "value": -21.37 },
+					{ "time": 2, "value": -80.99 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": -6.1, "y": -33.55 },
-					{ "time": 1.3333 }
+					{ "time": 1.3333, "x": 14.47, "y": 47.45 },
+					{ "time": 2, "x": -6.1, "y": -33.55 }
 				]
 			},
 			"L low bone": {
 				"rotate": [
-					{ "curve": "stepped" },
-					{ "time": 1.3333 }
+					{},
+					{ "time": 1.3333, "value": -70.89 },
+					{ "time": 2 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": -43.83, "y": 52.39 },
-					{ "time": 1.3333 }
+					{ "time": 1.3333, "x": -40.08, "y": -34.77 },
+					{ "time": 2, "x": -43.83, "y": 52.39 }
 				]
 			},
 			"Body bone": {
 				"rotate": [
 					{},
 					{ "time": 0.6667, "value": -20.43 },
-					{ "time": 1.3333, "value": 9.51 }
+					{ "time": 1.3333, "value": 9.51 },
+					{ "time": 2, "value": -20.43 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": -4.72, "y": -80.32 },
-					{ "time": 1.3333, "y": 19.25 }
+					{ "time": 1.3333, "y": 19.25 },
+					{ "time": 2, "x": -4.72, "y": -80.32 }
 				]
 			},
 			"R hand bone": {
 				"rotate": [
 					{},
 					{ "time": 0.6667, "value": -29.14 },
-					{ "time": 1.3333, "value": -17.16 }
+					{ "time": 1.3333, "value": -17.16 },
+					{ "time": 2, "value": -30.38 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": 12.3, "y": -13.62 },
-					{ "time": 1.3333, "x": 14.17, "y": -4.83 }
+					{ "time": 1.3333, "x": 14.17, "y": -4.83 },
+					{ "time": 2, "x": 20.85, "y": -17.72 }
 				]
 			},
 			"bone5": {
@@ -224,24 +827,34 @@
 				"rotate": [
 					{},
 					{ "time": 0.6667, "value": -54.09 },
-					{ "time": 1.3333, "value": -57.74 }
+					{ "time": 1.3333, "value": -57.74 },
+					{ "time": 2 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": 28.83, "y": -27.62 },
-					{ "time": 1.3333, "x": 32.2, "y": -31.74 }
+					{ "time": 1.3333, "x": 32.2, "y": -31.74 },
+					{ "time": 2 }
 				]
 			},
 			"bone8": {
 				"rotate": [
 					{},
 					{ "time": 0.6667, "value": 79.87 },
-					{ "time": 1.3333, "value": -14.4 }
+					{ "time": 1.3333, "value": -14.4 },
+					{ "time": 2, "value": 45 }
 				],
 				"translate": [
 					{ "curve": "stepped" },
 					{ "time": 0.6667, "curve": "stepped" },
-					{ "time": 1.3333 }
+					{ "time": 1.3333 },
+					{ "time": 2, "y": 7.32 }
+				]
+			},
+			"Head bone": {
+				"rotate": [
+					{ "time": 1.3333, "value": 10.01 },
+					{ "time": 2, "value": -0.94 }
 				]
 			},
 			"右眼眉毛": {
@@ -270,6 +883,320 @@
 			}
 		}
 	},
+	"Jump 1": {
+		"slots": {
+			"L眼": {
+				"attachment": [
+					{ "time": 0.3333, "name": "右眼關閉" },
+					{ "time": 0.6667, "name": "右眼關閉" }
+				]
+			},
+			"R眼": {
+				"attachment": [
+					{ "time": 0.3333, "name": "左眼關閉" },
+					{ "time": 0.6667, "name": "左眼關閉" }
+				]
+			},
+			"嘴巴2": {
+				"attachment": [
+					{ "time": 0.6667, "name": "嘴巴2" }
+				]
+			}
+		},
+		"bones": {
+			"R hand bone": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": -29.14 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": 12.3, "y": -13.62 }
+				]
+			},
+			"bone5": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": 100.78 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": -9.91, "y": 22.46 }
+				]
+			},
+			"Body bone": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": -20.43 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": -4.72, "y": -80.32 }
+				]
+			},
+			"L hand bone": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": -54.09 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": 28.83, "y": -27.62 }
+				]
+			},
+			"bone8": {
+				"rotate": [
+					{ "time": 0.6667, "value": 79.87 }
+				],
+				"translate": [
+					{ "time": 0.6667 }
+				]
+			},
+			"low bone": {
+				"rotate": [
+					{}
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "y": -50.9 }
+				]
+			},
+			"R low bone": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": -80.99 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": -6.1, "y": -33.55 }
+				]
+			},
+			"L low bone": {
+				"rotate": [
+					{}
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": -43.83, "y": 52.39 }
+				]
+			},
+			"左眼眉毛": {
+				"rotate": [
+					{},
+					{ "time": 0.6667, "value": 22.9 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": -34.4, "y": 8.62 }
+				]
+			},
+			"右眼眉毛": {
+				"rotate": [
+					{},
+					{ "time": 0.3333, "value": -31.04, "curve": "stepped" },
+					{ "time": 0.6667, "value": -31.04 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.3333, "x": -32.67, "y": -8.24, "curve": "stepped" },
+					{ "time": 0.6667, "x": -32.67, "y": -8.24 }
+				]
+			}
+		}
+	},
+	"jump 2": {
+		"slots": {
+			"L眼": {
+				"attachment": [
+					{ "time": 1, "name": "L眼" }
+				]
+			},
+			"嘴巴2": {
+				"attachment": [
+					{ "time": 1, "name": "嘴巴" }
+				]
+			}
+		},
+		"bones": {
+			"Head bone": {
+				"rotate": [
+					{ "time": 1, "value": 10.01 }
+				]
+			},
+			"R hand bone": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -17.16 }
+				],
+				"translate": [
+					{},
+					{ "time": 1, "x": 14.17, "y": -4.83 }
+				]
+			},
+			"bone5": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 1 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 1 }
+				]
+			},
+			"Body bone": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 9.51 }
+				],
+				"translate": [
+					{},
+					{ "time": 1, "y": 19.25 }
+				]
+			},
+			"L hand bone": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -57.74 }
+				],
+				"translate": [
+					{},
+					{ "time": 1, "x": 32.2, "y": -31.74 }
+				]
+			},
+			"low bone": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 6.32 }
+				],
+				"translate": [
+					{},
+					{ "time": 1, "x": -1.01, "y": 10.09 }
+				]
+			},
+			"R low bone": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -21.37 }
+				],
+				"translate": [
+					{},
+					{ "time": 1, "x": 14.47, "y": 47.45 }
+				]
+			},
+			"L low bone": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -70.89 }
+				],
+				"translate": [
+					{},
+					{ "time": 1, "x": -40.08, "y": -34.77 }
+				]
+			},
+			"右眼眉毛": {
+				"rotate": [
+					{}
+				],
+				"translate": [
+					{}
+				]
+			},
+			"左眼眉毛": {
+				"rotate": [
+					{}
+				],
+				"translate": [
+					{}
+				]
+			}
+		}
+	},
+	"Jump 3": {
+		"bones": {
+			"Body bone": {
+				"rotate": [
+					{ "value": -20.43, "curve": "stepped" },
+					{ "time": 0.3333, "value": -20.43 },
+					{ "time": 1 }
+				],
+				"translate": [
+					{ "x": -4.72, "y": -80.32, "curve": "stepped" },
+					{ "time": 0.3333, "x": -4.72, "y": -80.32 },
+					{ "time": 1 }
+				]
+			},
+			"low bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.3333, "curve": "stepped" },
+					{ "time": 1 }
+				],
+				"translate": [
+					{ "y": -50.9, "curve": "stepped" },
+					{ "time": 0.3333, "y": -50.9 },
+					{ "time": 1, "y": -7.38 }
+				]
+			},
+			"L low bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.3333, "curve": "stepped" },
+					{ "time": 1 }
+				],
+				"translate": [
+					{ "x": -43.83, "y": 52.39, "curve": "stepped" },
+					{ "time": 0.3333, "x": -43.83, "y": 52.39 },
+					{ "time": 1 }
+				]
+			},
+			"R low bone": {
+				"rotate": [
+					{ "value": -80.99, "curve": "stepped" },
+					{ "time": 0.3333, "value": -80.99 },
+					{ "time": 1 }
+				],
+				"translate": [
+					{ "x": -6.1, "y": -33.55, "curve": "stepped" },
+					{ "time": 0.3333, "x": -6.1, "y": -33.55 },
+					{ "time": 1 }
+				]
+			},
+			"R hand bone": {
+				"rotate": [
+					{ "value": -30.38, "curve": "stepped" },
+					{ "time": 0.3333, "value": -30.38 },
+					{ "time": 1 }
+				],
+				"translate": [
+					{ "x": 20.85, "y": -17.72, "curve": "stepped" },
+					{ "time": 0.3333, "x": 20.85, "y": -17.72 },
+					{ "time": 1 }
+				]
+			},
+			"L hand bone": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.3333 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 0.3333 }
+				]
+			},
+			"bone8": {
+				"rotate": [
+					{ "curve": "stepped" },
+					{ "time": 0.3333, "curve": "stepped" },
+					{ "time": 1 }
+				],
+				"translate": [
+					{ "curve": "stepped" },
+					{ "time": 0.3333, "curve": "stepped" },
+					{ "time": 1 }
+				]
+			}
+		}
+	},
 	"move": {
 		"bones": {
 			"L low bone": {
@@ -278,14 +1205,16 @@
 					{ "time": 0.6667, "value": 42.33 },
 					{ "time": 1.3333, "value": -16.26 },
 					{ "time": 2, "value": -40.11 },
-					{ "time": 2.6667, "value": 28.22 }
+					{ "time": 2.6667, "value": 28.22 },
+					{ "time": 3.3333 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": -13.03, "y": 96.34 },
 					{ "time": 1.3333, "x": -13.03, "y": 42.49 },
 					{ "time": 2, "x": 12.13, "y": -100.93 },
-					{ "time": 2.6667, "x": 12.67, "y": 76.38 }
+					{ "time": 2.6667, "x": 12.67, "y": 76.38 },
+					{ "time": 3.3333 }
 				]
 			},
 			"R low bone": {
@@ -294,14 +1223,16 @@
 					{ "time": 0.6667, "value": -40.26 },
 					{ "time": 1.3333 },
 					{ "time": 2, "value": 29.89 },
-					{ "time": 2.6667, "value": -8.32 }
+					{ "time": 2.6667, "value": -8.32 },
+					{ "time": 3.3333 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": -7.18, "y": -19.72 },
 					{ "time": 1.3333 },
 					{ "time": 2, "x": 11.14, "y": 168.79 },
-					{ "time": 2.6667, "x": -8.98, "y": 3.74 }
+					{ "time": 2.6667, "x": -8.98, "y": 3.74 },
+					{ "time": 3.3333 }
 				]
 			},
 			"R hand bone": {
@@ -310,12 +1241,15 @@
 					{ "time": 0.6667, "value": 46.66 },
 					{ "time": 1.3333, "value": -16.85 },
 					{ "time": 2, "value": 47.08 },
-					{ "time": 2.6667, "value": -0.49 }
+					{ "time": 2.6667, "curve": "stepped" },
+					{ "time": 3.3333 }
 				],
 				"translate": [
 					{},
 					{ "time": 1.3333, "x": 12.33, "y": -6.17 },
-					{ "time": 2, "x": 3.27, "y": 3.44 }
+					{ "time": 2, "x": 3.27, "y": 3.44 },
+					{ "time": 2.6667, "curve": "stepped" },
+					{ "time": 3.3333 }
 				]
 			},
 			"bone5": {
@@ -323,13 +1257,15 @@
 					{},
 					{ "time": 0.6667, "value": 35.61 },
 					{ "time": 1.3333, "value": 6.26 },
-					{ "time": 2.6667, "value": 35.61 }
+					{ "time": 2.6667, "value": 35.61 },
+					{ "time": 3.3333 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": 9.24, "y": 13.73 },
 					{ "time": 1.3333, "x": 6.93, "y": 3.74 },
-					{ "time": 2.6667, "x": 9.24, "y": 13.73 }
+					{ "time": 2.6667, "x": 9.24, "y": 13.73 },
+					{ "time": 3.3333 }
 				]
 			},
 			"L hand bone": {
@@ -338,20 +1274,23 @@
 					{ "time": 0.6667, "value": -51.73 },
 					{ "time": 1.3333, "value": 16.72 },
 					{ "time": 2, "value": -52.32 },
-					{ "time": 2.6667, "value": 12.41 }
+					{ "time": 2.6667, "value": 12.41 },
+					{ "time": 3.3333 }
 				],
 				"translate": [
 					{},
 					{ "time": 0.6667, "x": 30.81, "y": -34.37 },
 					{ "time": 1.3333, "x": 19.02, "y": -17.51 },
 					{ "time": 2, "x": 31.56, "y": -32.15 },
-					{ "time": 2.6667, "x": 16.14, "y": -19.54 }
+					{ "time": 2.6667, "x": 16.14, "y": -19.54 },
+					{ "time": 3.3333 }
 				]
 			},
 			"Body bone": {
 				"rotate": [
 					{},
-					{ "time": 0.6667, "value": -5.92 }
+					{ "time": 0.6667, "value": -5.92 },
+					{ "time": 3.3333 }
 				]
 			},
 			"low bone": {
@@ -360,20 +1299,32 @@
 					{ "time": 0.6667, "value": 5.37 },
 					{ "time": 1.3333, "value": 0.67 },
 					{ "time": 2, "value": 5.46 },
-					{ "time": 2.6667, "value": 0.56 }
+					{ "time": 2.6667, "value": 0.56 },
+					{ "time": 3.3333 }
 				],
 				"translate": [
-					{}
+					{ "curve": "stepped" },
+					{ "time": 3.3333 }
 				]
 			},
 			"右側頭髮bone": {
 				"rotate": [
 					{},
-					{ "time": 2.6667, "value": -13.75 }
+					{ "time": 2.6667, "value": -13.75 },
+					{ "time": 3.3333 }
 				],
 				"translate": [
 					{},
-					{ "time": 2.6667, "y": -4.72 }
+					{ "time": 2.6667, "y": -4.72 },
+					{ "time": 3.3333 }
+				]
+			},
+			"bone8": {
+				"rotate": [
+					{}
+				],
+				"translate": [
+					{}
 				]
 			}
 		}
@@ -382,14 +1333,12 @@
 		"slots": {
 			"L眼": {
 				"attachment": [
-					{ "name": "L眼" },
 					{ "time": 0.8333, "name": "右眼關閉" },
 					{ "time": 1.6667, "name": "L眼" }
 				]
 			},
 			"R眼": {
 				"attachment": [
-					{ "name": "R眼" },
 					{ "time": 0.8333, "name": "左眼關閉" },
 					{ "time": 1.6667, "name": "R眼" }
 				]
@@ -438,20 +1387,6 @@
 					{ "time": 0.8333, "value": 9.58 },
 					{ "time": 1.3333, "value": -17.19 },
 					{ "time": 1.6667 }
-				],
-				"translate": [
-					{ "curve": "stepped" },
-					{ "time": 1.6667 }
-				]
-			},
-			"back hair bone": {
-				"rotate": [
-					{ "curve": "stepped" },
-					{ "time": 1.6667 }
-				],
-				"translate": [
-					{ "curve": "stepped" },
-					{ "time": 1.6667 }
 				]
 			},
 			"右側頭髮bone": {
@@ -459,20 +1394,12 @@
 					{},
 					{ "time": 0.8333, "value": 14.68 },
 					{ "time": 1.6667 }
-				],
-				"translate": [
-					{ "curve": "stepped" },
-					{ "time": 1.6667 }
 				]
 			},
 			"low bone": {
 				"rotate": [
 					{},
 					{ "time": 0.8333, "value": -7.74 },
-					{ "time": 1.6667 }
-				],
-				"translate": [
-					{ "curve": "stepped" },
 					{ "time": 1.6667 }
 				]
 			},
@@ -505,30 +1432,12 @@
 					{},
 					{ "time": 0.8333, "value": -5.49 },
 					{ "time": 1.6667 }
-				],
-				"translate": [
-					{ "curve": "stepped" },
-					{ "time": 1.6667 }
 				]
 			},
 			"bone8": {
 				"rotate": [
 					{},
 					{ "time": 0.8333, "value": -19.97 },
-					{ "time": 1.6667 }
-				],
-				"translate": [
-					{ "curve": "stepped" },
-					{ "time": 1.6667 }
-				]
-			},
-			"Head bone": {
-				"rotate": [
-					{ "curve": "stepped" },
-					{ "time": 1.6667 }
-				],
-				"translate": [
-					{ "curve": "stepped" },
 					{ "time": 1.6667 }
 				]
 			}
