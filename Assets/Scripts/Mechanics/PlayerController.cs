@@ -70,7 +70,7 @@ namespace Platformer.Mechanics
             // Play some sound if the event named "footstep" fired.
             if (trackEntry.Animation.Name == "attack2")
             {
-                
+
                 Debug.Log("Play a footstep sound!");
                 prepareForFire = false;
             }
@@ -97,10 +97,12 @@ namespace Platformer.Mechanics
             if (Input.GetKeyDown(KeyCode.F) && !prepareForFire)
             {
                 prepareForFire = true;
+                arrow.gameObject.SetActive(true);
                 m_spineAni.state.SetAnimation(0, "attack", true);
             }
             else if (prepareForFire && Input.GetKeyUp(KeyCode.F))
             {
+                arrow.gameObject.SetActive(false);
                 m_spineAni.state.SetAnimation(0, "attack2", false);
 
             }
@@ -132,6 +134,8 @@ namespace Platformer.Mechanics
                     jumpState = JumpState.Jumping;
                     jump = true;
                     stopJump = false;
+                    m_spineAni.state.SetAnimation(0, "Jump 1", false);
+                    m_spineAni.state.AddAnimation(0, "jump 2", false, 0f);
                     break;
                 case JumpState.Jumping:
                     if (!IsGrounded)
@@ -175,15 +179,19 @@ namespace Platformer.Mechanics
                 m_spineAni.skeleton.ScaleX = -1;
 
 
+            if (health.IsAlive)
+            {
+                if (velocity == Vector2.zero && m_spineAni.state.GetCurrent(0).Animation.Name != "idle" && !prepareForFire)
+                {
+                    m_spineAni.state.SetAnimation(0, "idle", true);
+                }
+                else if (velocity.x != 0 && IsGrounded && m_spineAni.state.GetCurrent(0).Animation.Name != "move" && !prepareForFire && !jump)
+                {
+                    m_spineAni.state.TimeScale = 2;
+                    m_spineAni.state.SetAnimation(0, "move", true);
+                }
+            }
 
-            if (velocity == Vector2.zero && m_spineAni.state.GetCurrent(0).Animation.Name != "stand" && !prepareForFire)
-            {
-                m_spineAni.state.SetAnimation(0, "stand", true);
-            }
-            else if (velocity.x != 0 && IsGrounded && m_spineAni.state.GetCurrent(0).Animation.Name != "move" && !prepareForFire)
-            {
-                m_spineAni.state.SetAnimation(0, "move", true);
-            }
             //animator.SetBool("grounded", IsGrounded);
             //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
