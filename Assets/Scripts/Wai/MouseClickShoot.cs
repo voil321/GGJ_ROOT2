@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using Platformer.Mechanics;
 
 public class MouseClickShoot : MonoBehaviour
 {
-    private Ray2D ray;
-    RaycastHit2D hit;
-    [SerializeField] private Camera cam;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform shootPos;
     [SerializeField] [Range(0,50)] private float shootSpeed;
@@ -15,13 +13,14 @@ public class MouseClickShoot : MonoBehaviour
     [SerializeField] private float shootTimer;
     private bool isShooting;
     private float Lscale, angle, modifiedAngle;
+    public PlayerController Pl;
     // Start is called before the first frame update
     void Update()
     {
         if (Input.GetMouseButton(1))//aim down sight
         {
             //spawn aim down sight on Input.mousePosition
-            Lscale = gameObject.transform.parent.transform.localScale.x;
+            Lscale = Pl.m_spineAni.skeleton.ScaleX;
             angle = Mathf.Atan2(Camera.main.ScreenToWorldPoint(Input.mousePosition).y -
                                gameObject.transform.position.y,
                                Camera.main.ScreenToWorldPoint(Input.mousePosition).x -
@@ -29,7 +28,7 @@ public class MouseClickShoot : MonoBehaviour
             // check is the character facing right & the angle between mouse pos and the character center
             if (Lscale > 0)
             { // testing vector
-                gameObject.transform.localScale = new Vector3(1, 1, 1);
+                /*gameObject.transform.localScale = new Vector3(1, 1, 1);*/
                 transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(angle, -60f, 60f));
                 if (Input.GetMouseButtonDown(0) && !isShooting)//shoot
                     StartCoroutine(Shoot(Mathf.Clamp(Lscale, -1f, 1f), Mathf.Clamp(angle, -60f, 60f)));
@@ -41,7 +40,7 @@ public class MouseClickShoot : MonoBehaviour
                     modifiedAngle = angle + 360;
                 else
                     modifiedAngle = angle;
-                gameObject.transform.localScale = new Vector3(-1, 1, 1);
+                /*gameObject.transform.localScale = new Vector3(-1, 1, 1);*/
                 transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(modifiedAngle, 120f, 240f));
                 if (Input.GetMouseButtonDown(0) && !isShooting)//shoot
                     StartCoroutine(Shoot(Mathf.Clamp(Lscale, -1f, 1f), Mathf.Clamp(modifiedAngle, 120f, 240f)));

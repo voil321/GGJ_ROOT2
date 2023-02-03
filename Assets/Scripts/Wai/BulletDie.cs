@@ -17,6 +17,7 @@ public class BulletDie : MonoBehaviour
                 break;
             case BulletType.Bounce:
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+                gameObject.GetComponent<Collider2D>().isTrigger = false;
                 gameObject.GetComponent<Collider2D>().sharedMaterial = Mat;
                 break;
             case BulletType.Junkrat:
@@ -42,6 +43,13 @@ public class BulletDie : MonoBehaviour
             Destroy(gameObject);
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //enemy.minusHp
+            Destroy(gameObject);
+        }
+    }
 
 }
