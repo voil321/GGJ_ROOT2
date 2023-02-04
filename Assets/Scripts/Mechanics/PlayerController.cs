@@ -105,13 +105,13 @@ namespace Platformer.Mechanics
                     //Schedule<PlayerStopJump>().player = this;
                 }
 
-                if (Input.GetButtonDown("Fire1") && !prepareForFire)
+                if (Input.GetButtonDown("Fire2") && !prepareForFire)
                 {
                     prepareForFire = true;
                     arrow.gameObject.SetActive(true);
                     m_spineAni.state.SetAnimation(0, "attack", true);
                 }
-                else if (prepareForFire && Input.GetButtonUp("Fire1"))
+                else if (prepareForFire && Input.GetButtonUp("Fire2"))
                 {
                     arrow.gameObject.SetActive(false);
                     m_spineAni.state.SetAnimation(0, "attack2", false);

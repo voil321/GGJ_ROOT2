@@ -15,6 +15,7 @@ public class BossHandler : KinematicObject
 
     public GameObject root;
     public PlayerController player;
+    public Collider2D bossArea;
 
     void Awake()
     {
@@ -87,7 +88,7 @@ public class BossHandler : KinematicObject
 
     void SpwanRoot()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < 8)
+        if (bossArea.IsTouching(player.gameObject.GetComponent<Collider2D>()))
         {
             var aclone = Instantiate(root);
 
