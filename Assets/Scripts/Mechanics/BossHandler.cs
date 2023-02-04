@@ -13,29 +13,81 @@ public class BossHandler : KinematicObject
     public PatrolPath patrolPath;
     internal SkeletonAnimation m_spineAni;
 
+    public GameObject root;
+    public PlayerController player;
+
     void Awake()
     {
         m_spineAni = GetComponent<SkeletonAnimation>();
+
+        StartCoroutine(Attack());
     }
     protected override void ComputeVelocity()
     {
-        if (patrolPath.startPosition.x > transform.position.x)
+
+        if (patrolPath != null)
         {
-            move.x = 1;
-            m_spineAni.skeleton.ScaleX = -1;
+            if (patrolPath.startPosition.x > transform.position.x)
+            {
+                move.x = 1;
+                m_spineAni.skeleton.ScaleX = -1;
+
+            }
+            else if (patrolPath.endPosition.x < transform.position.x)
+            {
+                move.x = -1;
+                m_spineAni.skeleton.ScaleX = 1;
+            }
+
+            //animator.SetBool("grounded", IsGrounded);
+            //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+
+            targetVelocity = move * maxSpeed;
 
         }
-        else if (patrolPath.endPosition.x < transform.position.x)
-        {
-            move.x = -1;
-            m_spineAni.skeleton.ScaleX = 1;
-        }
-
-        //animator.SetBool("grounded", IsGrounded);
-        //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-
-        targetVelocity = move * maxSpeed;
-
-
     }
+
+    public IEnumerator Attack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+
+            yield return new WaitUntil(() => player.IsGrounded);
+
+            m_spineAni.state.SetAnimation(0, "Jump 1", false);
+            m_spineAni.state.AddAnimation(0, "Jump 2", false, 0f);
+            m_spineAni.state.AddAnimation(0, "Jump 3", false, 0f);
+            m_spineAni.state.AddAnimation(0, "idle", true, 0f);
+
+            SpwanRoot();
+
+            yield return new WaitForSeconds(0.7f);
+
+            yield return new WaitUntil(() => player.IsGrounded);
+
+            SpwanRoot();
+
+            yield return new WaitForSeconds(0.7f);
+
+            yield return new WaitUntil(() => player.IsGrounded);
+
+            SpwanRoot();
+
+        }
+    }
+
+    void SpwanRoot()
+    {
+        if (Vector3.Distance(player.transform.position, transform.position) < 8)
+        {
+            var aclone = Instantiate(root);
+
+            aclone.transform.position = player.transform.position;
+
+            aclone.GetComponent<EnemyController>().Spwan();
+        }
+    }
+
+
 }
