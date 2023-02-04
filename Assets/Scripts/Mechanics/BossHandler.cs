@@ -93,7 +93,7 @@ public class BossHandler : KinematicObject
 
             aclone.transform.position = player.transform.position;
 
-            aclone.GetComponent<EnemyController>().Spwan();
+            aclone.GetComponentInChildren<EnemyController>().Spwan();
         }
     }
 

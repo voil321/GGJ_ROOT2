@@ -7,6 +7,7 @@ using Platformer.Model;
 using Platformer.Core;
 using Spine.Unity;
 using Spine;
+using System;
 
 namespace Platformer.Mechanics
 {
@@ -44,6 +45,7 @@ namespace Platformer.Mechanics
         public Transform arrow;
         private bool prepareForFire;
         public bool controlEnabled = true;
+        public int bulletIndex;
 
         bool jump;
         Vector2 move;
@@ -102,24 +104,40 @@ namespace Platformer.Mechanics
                     //stopJump = true;
                     //Schedule<PlayerStopJump>().player = this;
                 }
+
+                if (Input.GetButtonDown("Fire1") && !prepareForFire)
+                {
+                    prepareForFire = true;
+                    arrow.gameObject.SetActive(true);
+                    m_spineAni.state.SetAnimation(0, "attack", true);
+                }
+                else if (prepareForFire && Input.GetButtonUp("Fire1"))
+                {
+                    arrow.gameObject.SetActive(false);
+                    m_spineAni.state.SetAnimation(0, "attack2", false);
+
+                }
+
+
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    bulletIndex = bulletIndex.GetArrayLoop(2, false);
+                    UIController.instance.SetBullet(bulletIndex);
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    bulletIndex = bulletIndex.GetArrayLoop(2, true);
+                    UIController.instance.SetBullet(bulletIndex);
+                }
+
+
             }
             else
             {
                 move.x = 0;
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && !prepareForFire)
-            {
-                prepareForFire = true;
-                arrow.gameObject.SetActive(true);
-                m_spineAni.state.SetAnimation(0, "attack", true);
-            }
-            else if (prepareForFire && Input.GetKeyUp(KeyCode.F))
-            {
-                arrow.gameObject.SetActive(false);
-                m_spineAni.state.SetAnimation(0, "attack2", false);
 
-            }
 
 
             mouse_pos = Input.mousePosition;
@@ -137,6 +155,12 @@ namespace Platformer.Mechanics
 
             UpdateJumpState();
             base.Update();
+        }
+
+        public void CalLoop(int index, int max)
+        {
+
+
         }
 
         void UpdateJumpState()

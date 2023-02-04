@@ -44,8 +44,8 @@ namespace Platformer.Mechanics
         public void Spwan()
         {
             attacked = false;
-            transform.localScale = new Vector2(0.3f, 0.1f);
-            var target = transform.position.y + (1 - transform.localScale.y) / 2;
+            transform.localScale = new Vector3(0.3f, 0.1f, -1f);
+            var target = transform.position.y + 0.37f;
 
             //var p = Mathf.InverseLerp(0.1f, 1f, Mathf.PingPong(Time.time - startTime, duration));
 
@@ -54,7 +54,7 @@ namespace Platformer.Mechanics
             seq.AppendInterval(.5f);
             seq.AppendCallback(() =>
             {
-                transform.DOScaleY(1f, 0.15f);
+                //transform.DOScaleY(1f, 0.15f);
                 transform.DOMoveY(target, 0.15f).OnComplete(() => { attacked = true; });
                 SpwanAndDestroy();
             });
