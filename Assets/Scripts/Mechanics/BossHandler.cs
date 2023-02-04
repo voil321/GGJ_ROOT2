@@ -77,6 +77,14 @@ public class BossHandler : KinematicObject
         }
     }
 
+    public void Hurt(int bulletIndex) {
+
+        m_spineAni.state.SetAnimation(0, "Jump 3", false);
+        m_spineAni.state.AddAnimation(0, "idle", true, 0f);
+
+        Debug.Log("hurt!!!!!!!!!");
+    }
+
     void SpwanRoot()
     {
         if (Vector3.Distance(player.transform.position, transform.position) < 8)

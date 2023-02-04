@@ -36,6 +36,7 @@ namespace Platformer.Mechanics
         /*internal new*/
         public AudioSource audioSource;
         public Health health;
+        public GameObject explosion;
 
         [SerializeField] private Vector3 mouse_pos;
         [SerializeField] private Vector3 object_pos;
@@ -62,6 +63,7 @@ namespace Platformer.Mechanics
             //spriteRenderer = GetComponent<SpriteRenderer>();
             //animator = GetComponent<Animator>();
 
+            m_spineAni.AnimationState.Start += Shoot;
             m_spineAni.AnimationState.Complete += HandleEvent;
         }
 
@@ -75,6 +77,18 @@ namespace Platformer.Mechanics
                 prepareForFire = false;
             }
         }
+
+        void Shoot(TrackEntry trackEntry)
+        {
+            // Play some sound if the event named "footstep" fired.
+            if (trackEntry.Animation.Name == "attack2")
+            {
+                var aclone = Instantiate(explosion);
+
+                aclone.transform.position = new Vector2(transform.position.x, transform.position.y + 2f);
+            }
+        }
+
 
         protected override void Update()
         {
