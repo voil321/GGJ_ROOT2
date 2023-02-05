@@ -30,9 +30,9 @@ public class MouseClickShoot : MonoBehaviour
             if (Lscale > 0)
             { // testing vector
                 /*gameObject.transform.localScale = new Vector3(1, 1, 1);*/
-                transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(angle, -60f, 60f));
+                /*transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(angle, -60f, 60f));*/
                 if (Input.GetMouseButtonDown(0) && !isShooting)//shoot
-                    StartCoroutine(Shoot(Mathf.Clamp(Lscale, -1f, 1f), Mathf.Clamp(angle, -60f, 60f)));
+                    StartCoroutine(Shoot(Mathf.Clamp(Lscale, -1f, 1f), angle));
             }
             // face left
             if (Lscale < 0)
@@ -42,9 +42,9 @@ public class MouseClickShoot : MonoBehaviour
                 else
                     modifiedAngle = angle;
                 /*gameObject.transform.localScale = new Vector3(-1, 1, 1);*/
-                transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(modifiedAngle, 120f, 240f));
+                /*transform.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(modifiedAngle, 120f, 240f));*/
                 if (Input.GetMouseButtonDown(0) && !isShooting)//shoot
-                    StartCoroutine(Shoot(Mathf.Clamp(Lscale, -1f, 1f), Mathf.Clamp(modifiedAngle, 120f, 240f)));
+                    StartCoroutine(Shoot(Mathf.Clamp(Lscale, -1f, 1f), modifiedAngle));
             }
         }
 
