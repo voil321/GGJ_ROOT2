@@ -6,7 +6,7 @@ using Platformer.Mechanics;
 
 public class MouseClickShoot : MonoBehaviour
 {
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject[] bullet;
     [SerializeField] private Transform shootPos;
     [SerializeField] [Range(0,50)] private float shootSpeed;
     [SerializeField] [Range(0, 20)] private int BulletDestroyTimer=0;
@@ -14,6 +14,7 @@ public class MouseClickShoot : MonoBehaviour
     private bool isShooting;
     private float Lscale, angle, modifiedAngle;
     public PlayerController Pl;
+
     // Start is called before the first frame update
     void Update()
     {
@@ -52,8 +53,9 @@ public class MouseClickShoot : MonoBehaviour
 
     IEnumerator Shoot(float scale, float angle)
     {
+
         isShooting = true;
-        GameObject newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
+        GameObject newBullet = Instantiate(bullet[Pl.bulletIndex], shootPos.position, Quaternion.identity);
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(scale, Mathf.Tan(angle * Mathf.PI / 180) * Mathf.Clamp(Lscale, -1f, 1f)).normalized * shootSpeed;
         newBullet.transform.rotation = Quaternion.Euler(0, 0, angle);
         newBullet.transform.localScale = new Vector2(newBullet.transform.localScale.x * scale, newBullet.transform.localScale.y);
